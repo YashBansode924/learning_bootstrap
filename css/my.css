@@ -1,0 +1,37 @@
+.card-animation{
+        
+        border-radius: 10px;
+        position: relative;
+    }
+    @property --angle{
+        syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+    }
+     .card-animation::after ,.card::before{
+      content: "";
+      position: absolute;
+      height: 102%;
+      width: 102%;
+      background: conic-gradient(from var(--angle),transparent 10%,red,blue,purple,yellow,black);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      border-radius: 10px;
+      padding: 8px;
+      animation: 2s spin linear infinite;
+    }
+    .card-animation::before{
+        filter: blur(1rem);
+        opacity: 0.5;
+
+    }
+    @keyframes spin{
+        from{
+            --angle:0deg;
+        }
+        to{
+          --angle:360deg;  
+        }
+    }
